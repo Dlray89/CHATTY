@@ -1,0 +1,82 @@
+@import "../typography/mixin.scss";
+
+.response-box {
+  @include response-box;
+
+  &__right {
+    @include response-box-right;
+
+    &--content {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      &__profile-info-box {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 50%;
+        font-size: 2rem;
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+
+        &--left {
+          width: 70%;
+          font-size: 2rem;
+          @include display-flex-one;
+
+          &__pic {
+          }
+
+          &__name {
+            font-size: 1.65rem;
+            color: blue;
+          }
+        }
+
+        &--right {
+          &__date {
+            font-size: 1.3rem;
+          }
+        }
+      }
+
+
+      &__btn-box {
+        width: 20%;
+
+
+        &--text {
+          font-size: 1.3rem;
+        }
+      }
+
+    }
+
+    &--replyingcontent {
+      font-size: 2.5rem;
+
+      &__box {
+        display: flex;
+        justify-content: flex-start;
+        margin-top: 0.5em ;
+
+
+        &--specText {
+          font-size: 1.6rem;
+        }
+      }
+
+      
+
+      &__text {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  &__left {
+  }
+}

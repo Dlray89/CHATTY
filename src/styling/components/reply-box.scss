@@ -1,0 +1,23 @@
+@import '../typography/mixin.scss';
+
+.reply-container {
+    @include reply-box;
+
+    &__left {
+        width: 10%;
+        text-align: center;
+
+    }
+    &__middle {
+        width: 70%;
+        
+    }
+
+    &__right {
+        width: 15%;
+        text-align: center;
+
+    }
+
+   
+}

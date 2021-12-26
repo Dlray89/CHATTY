@@ -1,0 +1,89 @@
+@import "../typography/variables.scss";
+@import "../typography/mixin.scss";
+
+.card-container {
+  @include comment-box-main;
+
+  &__left-box {
+    @include comment-box-left;
+    text-align: center;
+    background: $white;
+
+  }
+
+  &__right-box {
+    @include comment-box-right;
+    background: $white;
+
+
+    &--content {
+
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+      align-items: center;
+      background: $white;
+
+      &__img-and-name-box {
+        display: flex;
+        justify-content: space-between;
+        font-size: 2rem;
+        align-items: center;
+
+        width: 42%;
+        background: $white;
+
+        &--avatar-name {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 66%;
+
+
+          &__name {
+            font-size: 1.7rem;
+            color: rgb(40, 90, 228);
+          }
+          
+        }
+
+        &--date {
+          font-size: 1.4rem;
+        }
+
+      }
+
+      &__btn-box {
+          
+        &--btn {
+            font-size: 2rem;
+            text-transform: uppercase;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+            background-color: $white;
+            border: 0;
+            cursor: pointer;
+            &__icon {}
+
+            &__text {
+              font-size: 1.3rem;
+            }
+        }
+      }
+
+      &__text {
+          font-size: 2rem;
+          margin-top: 0.5em;
+      }
+    }
+
+    &--content-box {
+
+      &__text {
+        font-size: 1.6rem;
+      }
+    }
+  }
+}
