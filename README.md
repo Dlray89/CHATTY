@@ -9,4 +9,4 @@ compile:sass": "sass --watch path for index.sass & index.css
 
 to run sass:
 npm run compile:sass
-  
+  # CHATTY
