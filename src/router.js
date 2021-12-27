@@ -5,6 +5,8 @@ import CommentCard from "./components/comment-card/comment._card";
 import Home from "./home";
 import data from "./data.json";
 import Register from "./auth/register";
+import PrivateRoute from "./utils/ProtectedRoute";
+import NavBar from "./components/navbar";
 
 const RouterNav = () => {
   const [userData, setUserData] = useState(data);
@@ -67,31 +69,38 @@ const RouterNav = () => {
   };
 
   return (
-    <Routes>
+    <>
+      <div>
+        <NavBar />
+      </div>
+      <Routes>
         {console.log(setUserData, currentUser, setOpenReply)}
         <Route exact path="/" element={<Home />} />
-        <Route path="/login" element={ <Login />} />
-        <Route path="/register" element={ <Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+
         <Route
           path="/comments"
-         element={
-            <CommentCard
-              countReplyLikes={countReplyLikes}
-              replayToMessage={ReplyToMessage}
-              replymessage={replyMessage}
-              setReplyMessage={setReplyMessage}
-              openReply={openReply}
-              did_reply={did_reply}
-              userdata={userData}
-              comments={comments}
-              setCOmments={setCOmments}
-              count={countLikes}
-              close_reply={close_reply}
-            />
+          element={
+            <PrivateRoute>
+              <CommentCard
+                countReplyLikes={countReplyLikes}
+                replayToMessage={ReplyToMessage}
+                replymessage={replyMessage}
+                setReplyMessage={setReplyMessage}
+                openReply={openReply}
+                did_reply={did_reply}
+                userdata={userData}
+                comments={comments}
+                setCOmments={setCOmments}
+                count={countLikes}
+                close_reply={close_reply}
+              />
+            </PrivateRoute>
           }
         />
-
-    </Routes>
+      </Routes>
+    </>
   );
 };
 

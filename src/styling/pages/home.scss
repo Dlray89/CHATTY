@@ -2,5 +2,58 @@
 
 .App {
   background-color: $light-gray;
-  height: 100%;
+  background-image: url('../../images/fakurian-design-CN2FEPXERRI-unsplash.jpg');
+  height: 77rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%, cover;
+}
+
+
+
+.home-container {
+  border: solid 2px green;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 150em 50em;
+
+  &--left {
+    color: white;
+    width: 50%;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.568);
+    padding: 30px 30px;
+
+    &__title {
+      font-size: 8rem;
+    }
+
+    &__content {
+      font-size: 1.8rem;
+      margin-top: 2%;
+    }
+  }
+
+  &--right {
+    width: 40%;
+
+
+    &__login-form {
+      width: 50%;
+      margin: 0 auto;
+      
+
+      &--form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 10rem;
+
+      }
+    }
+  }
+
+
 }

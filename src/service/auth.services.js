@@ -6,33 +6,30 @@ const API_URL = '/api/auth/'
 
 class AuthService {
     login(username, password) {
-        return axios.post(API_URL + 'signin', {
+        return axios.post(API_URL + 'login', {
             username,
             password
         }).then(res => {
-            if (res.data.accessToken) {
-                localStorage.getItem('user', JSON.stringify(res.data))
-                history.push('/comments')
-                window.location.reload()
-            }
-
+           
             return res.data
         })
     }
     
     logout() {
-    localStorage.removeItem('user')
+        localStorage.removeItem('user')
+        
+        localStorage.removeItem('token')
+        localStorage.removeItem('welcome')
     }
     
-    register(username, email, password) {
-        return axios.post(API_URL + 'signup', {
+    register(username, password) {
+        return axios.post(API_URL + 'register', {
             username,
-            email,
             password
         }).then(res => {
-            console.log(res.data)
-            history.push('/login')
-            window.location.reload()
+            console.log(res)
+
+           
         })
     }
 

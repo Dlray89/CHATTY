@@ -7,7 +7,47 @@
 
 .App {
   background-color: #eaecf1;
-  height: 100%;
+  background-image: url("../../images/fakurian-design-CN2FEPXERRI-unsplash.jpg");
+  height: 77rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%, cover;
+}
+
+.home-container {
+  border: solid 2px green;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 150em 50em;
+}
+.home-container--left {
+  color: white;
+  width: 50%;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.568);
+  padding: 30px 30px;
+}
+.home-container--left__title {
+  font-size: 8rem;
+}
+.home-container--left__content {
+  font-size: 1.8rem;
+  margin-top: 2%;
+}
+.home-container--right {
+  width: 40%;
+}
+.home-container--right__login-form {
+  width: 50%;
+  margin: 0 auto;
+}
+.home-container--right__login-form--form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 10rem;
 }
 
 .card-container {
@@ -177,6 +217,24 @@
 }
 .response-box__right--replyingcontent__text {
   font-size: 1.5rem;
+}
+.nav-toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
+.nav-toolbar--logo-box__logo {
+  width: 20%;
+  transform: scale(2.5);
+}
+.nav-toolbar--link-box {
+  width: 10%;
+  text-align: right;
+  margin-right: 16rem;
 }
 
 /*# sourceMappingURL=index.css.map */

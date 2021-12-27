@@ -1,0 +1,25 @@
+.nav-toolbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+
+
+    &--logo-box {
+
+
+        &__logo {
+            width: 20%;
+            transform: scale(2.5);
+        }
+    }
+
+    &--link-box {
+        width: 10%;
+       text-align: right;
+       margin-right: 16rem;
+    }
+}
