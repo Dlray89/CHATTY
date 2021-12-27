@@ -1,5 +1,4 @@
 import axios from "axios";
-import history from "../utils/history";
 
 
 const API_URL = '/api/auth/'

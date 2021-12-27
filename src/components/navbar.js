@@ -38,14 +38,15 @@ const NavBar = () => {
         window.location.reload()
     }
   return (
-    <>
+      <>
+          {console.log(setMessage)}
       {token ? (
         <>
           <AppBar style={{ background: "white" }} className={classes.root}>
             <Toolbar>
               <div className="nav-toolbar">
                 <div className="nav-toolbar--logo-box">
-                  <img className="nav-toolbar--logo-box__logo" src={logo} />
+                  <img className="nav-toolbar--logo-box__logo" alt='logo of chatty' src={logo} />
                 </div>
                 <div className="nav-toolbar--link-box">
                                   {" "}
@@ -69,7 +70,7 @@ const NavBar = () => {
             <Toolbar>
               <div className="nav-toolbar">
                 <div className="nav-toolbar--logo-box">
-                  <img className="nav-toolbar--logo-box__logo" src={logo} />
+                  <img className="nav-toolbar--logo-box__logo" alt="logo of chatty" src={logo} />
                                   </div>
                                   <p>Welcome { message}</p>
 

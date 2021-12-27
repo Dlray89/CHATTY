@@ -1,8 +1,6 @@
 import { TextField, Button, Switch } from "@mui/material";
 import { makeStyles} from '@mui/styles'
-import { fontSize } from "@mui/system";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import authServices from "../service/auth.services";
 import history from "../utils/history";
 

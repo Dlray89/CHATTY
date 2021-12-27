@@ -1,18 +1,17 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import Login from "./auth/login";
 import Register from "./auth/register";
 
 const Home = () => {
   const [switchForm, setSwitchForm] = useState(false);
 
-  const toggleForm = () => {
-    setSwitchForm(true);
-  };
+  // const toggleForm = () => {
+  //   setSwitchForm(true);
+  // };
 
-  const toggleFormBack = () => {
-    setSwitchForm(false);
-  };
+  // const toggleFormBack = () => {
+  //   setSwitchForm(false);
+  // };
   return (
     <div className="home-container">
       <div className="home-container--left">

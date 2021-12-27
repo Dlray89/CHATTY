@@ -5,21 +5,21 @@ import React, { useState } from "react";
 import authServices from "../service/auth.services";
 import history from "../utils/history";
 
-const useStyles = makeStyles((theme) => ({
-  input: {
-    marginBottom: "30rem",
-  },
-  login_btn: {
-    width: "50%",
-    border: "solid 2px red",
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   input: {
+//     marginBottom: "30rem",
+//   },
+//   login_btn: {
+//     width: "50%",
+//     border: "solid 2px red",
+//   },
+// }));
 
 const Register = ({ toggleFormBack }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   // const [email, setEmail] = useState('')
-  const classes = useStyles();
+//   const classes = useStyles();
 
   const register = (e) => {
     authServices.register(username, password).then((res) => {
