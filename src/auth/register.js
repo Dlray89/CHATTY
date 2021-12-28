@@ -3,7 +3,6 @@ import { Button, Switch, TextField } from "@mui/material";
 import React, { useState } from "react";
 
 import authServices from "../service/auth.services";
-import history from "../utils/history";
 
 // const useStyles = makeStyles((theme) => ({
 //   input: {

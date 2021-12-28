@@ -1,12 +1,11 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import userService from "../service/user.service";
+// import userService from "../service/user.service";
 
 
 const Dashboard = () => {
-  const welcomeMessage = JSON.stringify(localStorage.getItem("welcome"));
-  const token = localStorage.getItem("token");
-  const [message, setMessage] = useState(welcomeMessage);
+  // const token = localStorage.getItem("token");
+  // const [message, setMessage] = useState(welcomeMessage);
   const [users, setUsers] = useState([]);
 
 

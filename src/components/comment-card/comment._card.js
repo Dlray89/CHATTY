@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Avatar, Button, TextField } from "@mui/material";
 // import avatar from "../images/avatars/image-amyrobson.png";
 import Likebtn from "../btns/like-btn";
 import RightSide from "./com-right";
-import authServices from "../../service/auth.services";
 import AllReplies from "../response-box";
 
 
@@ -20,7 +19,7 @@ const CommentCard = ({
 }) => {
   //   const [count, setCount] = useState(0);
   //  const [data, setData] = useState(userdata);
-  const [replies, setReplies] = useState([]);
+  // const [replies, setReplies] = useState([]);
   const token = localStorage.getItem('token')
 
  
