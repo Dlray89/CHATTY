@@ -1,14 +1,11 @@
+import axios from "axios"
+
 export default function authHeader() {
-  const user = JSON.parse(localStorage.getItem("user"));
+    const token = localStorage.getItem('token')
 
-  if (user && user.accessToken) {
-      return {
-          'x-access-token': user.accessToken,
-          ' Content-Type': ' application/json',
-          "Accept":" text/plain"
-
-      };
-  } else {
-    return {};
-  }
-}
+  return axios.create({
+    headers: {
+        Authorization: `${token}`
+      }
+    })
+    }

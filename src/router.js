@@ -7,6 +7,8 @@ import data from "./data.json";
 import Register from "./auth/register";
 import PrivateRoute from "./utils/ProtectedRoute";
 import NavBar from "./components/navbar";
+import Dashboard from "./auth/dashboard";
+
 
 const RouterNav = () => {
   const [userData, setUserData] = useState(data);
@@ -78,7 +80,11 @@ const RouterNav = () => {
         <Route exact path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-
+        <Route path='/dashboard' element={
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+      }  />
         <Route
           path="/comments"
           element={

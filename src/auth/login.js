@@ -3,6 +3,7 @@ import { makeStyles} from '@mui/styles'
 import React, { useState } from "react";
 import authServices from "../service/auth.services";
 import history from "../utils/history";
+import userService from "../service/user.service";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -28,8 +29,10 @@ const classes = useStyles()
         if (res.token) {
           history.push("/comments");
           window.location.reload();
+          localStorage.setItem('user', JSON.stringify(res) )
           localStorage.setItem("token", JSON.stringify(res.token));
           localStorage.setItem("welcome", JSON.stringify(res.message));
+          console.log()
         }
       })
       .catch((err) => {

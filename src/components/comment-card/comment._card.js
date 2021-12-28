@@ -3,8 +3,9 @@ import { Avatar, Button, TextField } from "@mui/material";
 // import avatar from "../images/avatars/image-amyrobson.png";
 import Likebtn from "../btns/like-btn";
 import RightSide from "./com-right";
-
+import authServices from "../../service/auth.services";
 import AllReplies from "../response-box";
+
 
 const CommentCard = ({
   comments,
@@ -18,13 +19,15 @@ const CommentCard = ({
   countReplyLikes,
 }) => {
   //   const [count, setCount] = useState(0);
-//  const [data, setData] = useState(userdata);
+  //  const [data, setData] = useState(userdata);
   const [replies, setReplies] = useState([]);
+  const token = localStorage.getItem('token')
 
+ 
 
   return (
     <>
-      {console.log(setReplies)}
+   
       {comments.map((item, id) => (
         <>
           {item.didreply ? (
@@ -32,7 +35,7 @@ const CommentCard = ({
               <>
                 {" "}
                 <div className="card-container" key={id}>
-                  {console.log(replies)}
+                {console.log(token, 'token')}
                   <Likebtn id={id} item={item} count={count} />
                   <div className="card-container__right-box">
                     <RightSide id={id} item={item} did_reply={did_reply} />
@@ -48,8 +51,6 @@ const CommentCard = ({
                       countReplyLikes={countReplyLikes}
                       did_reply={did_reply}
                     />
-
-                   
                   </>
                 ))}
               </>

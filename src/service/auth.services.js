@@ -2,6 +2,7 @@ import axios from "axios";
 
 
 const API_URL = '/api/auth/'
+const API_USERS = '/api/'
 
 class AuthService {
     login(username, password) {
@@ -15,8 +16,7 @@ class AuthService {
     }
     
     logout() {
-        localStorage.removeItem('user')
-        
+        localStorage.removeItem('user')   
         localStorage.removeItem('token')
         localStorage.removeItem('welcome')
     }
@@ -26,7 +26,8 @@ class AuthService {
             username,
             password
         }).then(res => {
-            console.log(res)
+            console.log(res, 'resdfrg')
+            JSON.parse(localStorage.setItem('user', res.username))
 
            
         })
@@ -35,6 +36,8 @@ class AuthService {
     getCurrentUser() {
         return JSON.parse(localStorage.getItem('user'))
     }
+
+   
 }
 
 export default new AuthService()

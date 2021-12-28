@@ -23,10 +23,8 @@ const Register = ({ toggleFormBack }) => {
 
   const register = (e) => {
     authServices.register(username, password).then((res) => {
-      console.log(res, "data");
-      history.push("/comments");
-      window.location.reload();
-      localStorage.setItem("username", res.username);
+      toggleFormBack(false)
+     
     });
   };
   return (
