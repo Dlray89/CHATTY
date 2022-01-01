@@ -1,10 +1,8 @@
 import { Navigate } from 'react-router-dom'
-import { useAuth0 } from '@auth0/auth0-react'
 
 
 const PrivateRoute = ({ children }) => {
-    const  { getAccessTokenSilently} = useAuth0()
-    const getToken = getAccessTokenSilently
+    const getToken = JSON.stringify(localStorage.getItem('token'))
     return getToken ? children : <Navigate to='/'  />
 
 

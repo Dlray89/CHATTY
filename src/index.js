@@ -9,7 +9,7 @@ ReactDOM.render(
   <Auth0Provider
     domain="dapthedev.us.auth0.com"
     clientId="Cd1qTsEQOhzTTOo2ASUPjGhSdrxE35Yk"
-    redirectUri='http://localhost:3000/comments'
+    redirectUri='https://chatty-indol.vercel.app/comments'
     audience="https://dapthedev.us.auth0.com/api/v2/"
     scope="read:current_user update:current_user_metadata"
   >
