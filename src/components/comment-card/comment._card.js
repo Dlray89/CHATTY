@@ -25,7 +25,7 @@ const CommentCard = ({
  
 
   return (
-    <>
+    <div style={{padding:'10rem 0'}}>
    
       {comments.map((item, id) => (
         <>
@@ -121,7 +121,7 @@ const CommentCard = ({
           )}
         </>
       ))}
-    </>
+    </div>
   );
 };
 

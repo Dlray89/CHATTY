@@ -15,7 +15,6 @@
 }
 
 .home-container {
-  border: solid 2px green;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -69,6 +68,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  margin: 2rem auto;
 }
 .card-container__left-box {
   width: 15%;
@@ -233,14 +233,13 @@
   width: 100%;
   margin: 0 auto;
 }
-.nav-toolbar--logo-box__logo {
-  width: 20%;
-  transform: scale(2.5);
+.nav-toolbar--img {
+  width: 7rem;
+  border-radius: 50px;
 }
-.nav-toolbar--link-box {
-  width: 10%;
-  text-align: right;
-  margin-right: 16rem;
+.nav-toolbar--nav-titles {
+  font-size: 3rem;
+  color: black;
 }
 
 /*# sourceMappingURL=index.css.map */

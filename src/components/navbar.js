@@ -23,64 +23,73 @@ const useStyles = makeStyles((theme) => ({
     width: "30%",
     margin: "0 auto",
   },
+  logoutBtn: {
+    fontSize:'1.2rem'
+  }
 }));
 
 const NavBar = () => {
   const classes = useStyles();
 
   const { user, isAuthenticated, logout, getAccessTokenSilently } = useAuth0();
-  const [userMetaData,  setUserMetadata] = useState(null);
+  const [userMetaData, setUserMetadata] = useState(null);
 
   useEffect(() => {
     const getUserMetadata = async () => {
       const domain = "dapthedev.us.auth0.com";
-      
-  
+
       try {
         const accessToken = await getAccessTokenSilently({
           audience: `https://${domain}/api/v2/`,
           scope: "read:current_user",
         });
-       localStorage.setItem('token', accessToken)
-  
+        localStorage.setItem("token", accessToken);
+
         const userDetailsByIdUrl = `https://${domain}/api/v2/users/${user.sub}`;
-  
+
         const metadataResponse = await fetch(userDetailsByIdUrl, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
         });
-  
+
         const { user_metadata } = await metadataResponse.json();
-  
+
         setUserMetadata(user_metadata);
       } catch (e) {
         console.log(e.message);
       }
     };
-  
+
     getUserMetadata();
-  
   }, [getAccessTokenSilently, user?.sub]);
 
   return (
     isAuthenticated && (
-      <AppBar style={{ background: "white" }} className={classes.root}>5
-        {console.log(user)}
+      <AppBar style={{ background: "white" }} className={classes.root}>
+        5{console.log(user)}
         <Toolbar>
-          <div>
-            <img src={user.picture} alt={user.name} />
-            <h2>{user.name}</h2>
-            <p>{user.email}</p>
-            <p style={{border:'solid 2px red', fontSize:'3rem', color:'black'}}>
+          <div className="nav-toolbar">
+            <img
+              className="nav-toolbar--img"
+              src={user.picture}
+              alt={user.name}
+            />
+            <>
               {userMetaData ? (
-                <> Welcome to Chatty { userMetaData.theme}</>
+                <p
+                className="nav-toolbar--nav-titles"
+             
+                >
+                  {" "}
+                  Welcome to Chatty {user.name}
+                </p>
               ) : (
                 "no user data"
               )}
-            </p>
+            </>    <Button className={classes.logoutBtn} variant="contained" onClick={() => logout()}>Logout</Button>
           </div>
-          <Button onClick={() => logout()}>Logout</Button>
+      
         </Toolbar>
       </AppBar>
     )

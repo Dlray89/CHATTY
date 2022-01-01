@@ -7,19 +7,16 @@
     width: 100%;
     margin: 0 auto;
 
-
-    &--logo-box {
-
-
-        &__logo {
-            width: 20%;
-            transform: scale(2.5);
-        }
+    &--img {
+        width: 7rem;
+        border-radius: 50px;
     }
 
-    &--link-box {
-        width: 10%;
-       text-align: right;
-       margin-right: 16rem;
+    &--nav-titles {
+        font-size: 3rem;
+        color: black;
     }
+
+
+    
 }

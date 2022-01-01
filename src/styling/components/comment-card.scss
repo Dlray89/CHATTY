@@ -3,6 +3,7 @@
 
 .card-container {
   @include comment-box-main;
+margin: 2rem auto;
 
   &__left-box {
     @include comment-box-left;
