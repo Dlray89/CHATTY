@@ -8,7 +8,7 @@
 .App {
   background-color: #eaecf1;
   background-image: url("../../images/fakurian-design-CN2FEPXERRI-unsplash.jpg");
-  height: 77rem;
+  height: 77.1rem;
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%, cover;
@@ -20,24 +20,30 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 150em 50em;
+  padding: 110em 50em;
 }
 .home-container--left {
   color: white;
-  width: 50%;
+  width: 100%;
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.568);
   padding: 30px 30px;
 }
 .home-container--left__title {
   font-size: 8rem;
+  text-align: center;
 }
 .home-container--left__content {
   font-size: 1.8rem;
   margin-top: 2%;
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 1em;
 }
-.home-container--right {
-  width: 40%;
+.home-container--left__login-btn {
+  text-align: center;
+  font-size: 2rem;
 }
 .home-container--right__login-form {
   width: 50%;

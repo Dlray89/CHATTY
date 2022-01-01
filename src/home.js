@@ -1,10 +1,18 @@
-import React, { useState } from "react";
-import Login from "./auth/login";
-import Register from "./auth/register";
+import { Button } from "@mui/material";
+import { makeStyles} from '@mui/styles'
+import React from "react";
+import { useAuth0 } from '@auth0/auth0-react'
+
+const useStyles = makeStyles((theme) => ({
+  loginbtn: {
+    width: '10%',
+  
+  }
+}))
 
 const Home = () => {
-  const [switchForm, setSwitchForm] = useState(false);
-
+  const { loginWithRedirect } = useAuth0()
+  const classes = useStyles()
   // const toggleForm = () => {
   //   setSwitchForm(true);
   // };
@@ -12,6 +20,8 @@ const Home = () => {
   // const toggleFormBack = () => {
   //   setSwitchForm(false);
   // };
+
+  
   return (
     <div className="home-container">
       <div className="home-container--left">
@@ -25,13 +35,13 @@ const Home = () => {
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
         </p>
+        
+        <div className="home-container--left__login-btn">
+              <Button style={{fontSize:'1.5rem'}} className={classes.loginbtn} variant="contained" onClick={() => loginWithRedirect()} >Login</Button>
+       </div>
       </div>
       <div className="home-container--right">
-        {switchForm ? (
-          <Register toggleFormBack={setSwitchForm} />
-        ) : (
-          <Login toggleForm={setSwitchForm} />
-        )}
+
       </div>
     </div>
   );

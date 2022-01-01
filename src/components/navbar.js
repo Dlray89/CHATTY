@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AppBar, Button, Toolbar } from "@mui/material";
-import { Link } from "react-router-dom";
 import { makeStyles } from "@mui/styles";
-import logo from "../images/Chatty.svg";
-import authServices from "../service/auth.services";
-import history from "../utils/history";
+
+import { useAuth0 } from "@auth0/auth0-react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,63 +27,63 @@ const useStyles = makeStyles((theme) => ({
 
 const NavBar = () => {
   const classes = useStyles();
-    const token = localStorage.getItem("token");
-    const [message, setMessage] = useState(localStorage.getItem('message'))
 
-    const logout = () => {
-        authServices.logout()
-        history.push('/')
-        window.location.reload()
-    }
+  const { user, isAuthenticated, logout, getAccessTokenSilently } = useAuth0();
+  const [userMetaData,  setUserMetadata] = useState(null);
+
+  useEffect(() => {
+    const getUserMetadata = async () => {
+      const domain = "dapthedev.us.auth0.com";
+      
+  
+      try {
+        const accessToken = await getAccessTokenSilently({
+          audience: `https://${domain}/api/v2/`,
+          scope: "read:current_user",
+        });
+       localStorage.setItem('token', accessToken)
+  
+        const userDetailsByIdUrl = `https://${domain}/api/v2/users/${user.sub}`;
+  
+        const metadataResponse = await fetch(userDetailsByIdUrl, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+  
+        const { user_metadata } = await metadataResponse.json();
+  
+        setUserMetadata(user_metadata);
+      } catch (e) {
+        console.log(e.message);
+      }
+    };
+  
+    getUserMetadata();
+  
+  }, [getAccessTokenSilently, user?.sub]);
+
   return (
-      <>
-          {console.log(setMessage)}
-      {token ? (
-        <>
-          <AppBar style={{ background: "white" }} className={classes.root}>
-            <Toolbar>
-              <div className="nav-toolbar">
-                <div className="nav-toolbar--logo-box">
-                  <img className="nav-toolbar--logo-box__logo" alt='logo of chatty' src={logo} />
-                </div>
-                <div className="nav-toolbar--link-box">
-                                  {" "}
-                                  <p>Welcome { message}</p>
-                  <Link className={classes.links} to="/">
-                    Home
-                                  </Link>
-                                  <p>Welcome { message}</p>
-                  <Button onClick={logout} variant='contained' className={classes.links} to="/">
-                    Logout
-                  </Button>
-                </div>
-              </div>
-            </Toolbar>
-          </AppBar>
-        </>
-      ) : (
-        <>
-          {" "}
-          <AppBar style={{ background: "white" }} className={classes.root}>
-            <Toolbar>
-              <div className="nav-toolbar">
-                <div className="nav-toolbar--logo-box">
-                  <img className="nav-toolbar--logo-box__logo" alt="logo of chatty" src={logo} />
-                                  </div>
-                                  <p>Welcome { message}</p>
-
-                <div className="nav-toolbar--link-box">
-                  {" "}
-                  <Link className={classes.links} to="/">
-                    Home
-                  </Link>
-                </div>
-              </div>
-            </Toolbar>
-          </AppBar>
-        </>
-      )}
-    </>
+    isAuthenticated && (
+      <AppBar style={{ background: "white" }} className={classes.root}>5
+        {console.log(user)}
+        <Toolbar>
+          <div>
+            <img src={user.picture} alt={user.name} />
+            <h2>{user.name}</h2>
+            <p>{user.email}</p>
+            <p style={{border:'solid 2px red', fontSize:'3rem', color:'black'}}>
+              {userMetaData ? (
+                <> Welcome to Chatty { userMetaData.theme}</>
+              ) : (
+                "no user data"
+              )}
+            </p>
+          </div>
+          <Button onClick={() => logout()}>Logout</Button>
+        </Toolbar>
+      </AppBar>
+    )
   );
 };
 
