@@ -16,6 +16,7 @@ const CommentCard = ({
   setReplyMessage,
   close_reply,
   countReplyLikes,
+  user
 }) => {
   //   const [count, setCount] = useState(0);
   //  const [data, setData] = useState(userdata);
@@ -37,7 +38,7 @@ const CommentCard = ({
                 {console.log(token, 'token')}
                   <Likebtn id={id} item={item} count={count} />
                   <div className="card-container__right-box">
-                    <RightSide id={id} item={item} did_reply={did_reply} />
+                    <RightSide id={id} item={item} did_reply={did_reply} user={user} />
                   </div>
                 </div>
               </>
@@ -49,6 +50,7 @@ const CommentCard = ({
                       id={id}
                       countReplyLikes={countReplyLikes}
                       did_reply={did_reply}
+                      user={user}
                     />
                   </>
                 ))}
@@ -61,7 +63,7 @@ const CommentCard = ({
                 className="reply-container"
               >
                 <div className="reply-container__left">
-                  <Avatar style={{ margin: "0 auto" }} />
+                  <Avatar src={user.picture} style={{ margin: "0 auto" }} />
                 </div>
 
                 <div className="reply-container__middle">
@@ -104,7 +106,7 @@ const CommentCard = ({
                   `'${item.user.image.png}'`
                 )}
                 <Likebtn id={id} item={item} count={count} />
-                <RightSide id={id} item={item} did_reply={did_reply} />
+                <RightSide id={id} item={item} did_reply={did_reply} user={user} />
               </div>
               {console.log(comments)}
               {item.replies.map((item, id) => (

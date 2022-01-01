@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AllReplies = ({ id, item, countReplyLikes, did_reply }) => {
+const AllReplies = ({ id, item, countReplyLikes, did_reply, user }) => {
   const classes = useStyles();
   return (
     <>
@@ -32,7 +32,7 @@ const AllReplies = ({ id, item, countReplyLikes, did_reply }) => {
               <div className="response-box__right--content__profile-info-box--left">
                 {" "}
                 <div className="response-box__right--content__profile-info-box--left__pic">
-                  <Avatar />
+                  <Avatar src={item.user.image} />
                 </div>
                 <div className="response-box__right--content__profile-info-box--left__name">
                   @{item.user.username}{" "}

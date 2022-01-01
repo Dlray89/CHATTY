@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const RightSide = ({ item, did_reply, id }) => {
+const RightSide = ({ item, did_reply, id, user }) => {
 
   const classes = useStyles()
   return (

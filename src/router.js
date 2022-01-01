@@ -8,7 +8,7 @@ import Register from "./auth/register";
 import PrivateRoute from "./utils/ProtectedRoute";
 import NavBar from "./components/navbar";
 import Dashboard from "./auth/dashboard";
-
+import { useAuth0 } from "@auth0/auth0-react";
 
 const RouterNav = () => {
   const [userData, setUserData] = useState(data);
@@ -16,6 +16,8 @@ const RouterNav = () => {
   const currentUser = userData.currentUser;
   const [openReply, setOpenReply] = useState(false);
   const [replyMessage, setReplyMessage] = useState("");
+  const { user, isAuthenticated, logout, getAccessTokenSilently } = useAuth0();
+  const [userMetaData, setUserMetadata] = useState(null);
 
   const countLikes = (id) => {
     const newLikes = [...comments];
@@ -59,8 +61,8 @@ const RouterNav = () => {
       score: 0,
       replyingTo: newComments[id].user.username,
       user: {
-        image: { png: "" },
-        username: "jamesgordon11",
+        image: user.picture,
+        username: user.name
       },
       replies: [],
     };
@@ -73,18 +75,28 @@ const RouterNav = () => {
   return (
     <>
       <div>
-        <NavBar />
+        <NavBar
+          user={user}
+          isAuthenticated={isAuthenticated}
+          logout={logout}
+          getAccessTokenSilently={getAccessTokenSilently}
+          userMetaData={userMetaData}
+          setUserMetadata={setUserMetadata}
+        />
       </div>
       <Routes>
         {console.log(setUserData, currentUser, setOpenReply)}
         <Route exact path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path='/dashboard' element={
-          <PrivateRoute>
-            <Dashboard />
-          </PrivateRoute>
-      }  />
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="/comments"
           element={
@@ -101,6 +113,7 @@ const RouterNav = () => {
                 setCOmments={setCOmments}
                 count={countLikes}
                 close_reply={close_reply}
+                user={user}
               />
             </PrivateRoute>
           }

@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { AppBar, Button, Toolbar } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
-import { useAuth0 } from "@auth0/auth0-react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,11 +27,10 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const NavBar = () => {
+const NavBar = ({user, userMetaData, setUserMetadata, isAuthenticated, logout, getAccessTokenSilently}) => {
   const classes = useStyles();
 
-  const { user, isAuthenticated, logout, getAccessTokenSilently } = useAuth0();
-  const [userMetaData, setUserMetadata] = useState(null);
+
 
   useEffect(() => {
     const getUserMetadata = async () => {
@@ -62,7 +60,7 @@ const NavBar = () => {
     };
 
     getUserMetadata();
-  }, [getAccessTokenSilently, user?.sub]);
+  }, [getAccessTokenSilently, user?.sub, setUserMetadata]);
 
   return (
     isAuthenticated && (
