@@ -13,3 +13,4 @@ npm run compile:sass
 # chatty
 # chatty-fe
 # chatty-fe
+# chatt-social-media
