@@ -40,8 +40,6 @@
 > State Management: Context was used to many small state to avoid prop drilling.
 
 ## Other Tools
-> Students API: <br />
-https://api.hatchways.io/assessment/students <br />
 
 > Installing Material-UI <br /> `npm install @mui/material @emotion/react @emotion/styled`
 <br />
