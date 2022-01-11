@@ -55,7 +55,7 @@ const RouterNav = () => {
     // );
 
     const newReply = {
-      createdAt: "2 week ago",
+      createdAt: "1 week ago",
       content: replyMessage,
       id: newComments[id].id,
       score: 0,
